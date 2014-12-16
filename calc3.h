@@ -18,16 +18,17 @@ typedef enum {
 	TYPE_UNDEF	 	//rgc: used by the parser for an identifier not being initialized
 } vartypeEnum; 
 
+// flags to handle constants
 typedef enum {
-	FLAG_CONST_UNDEF,
-	FLAG_CONST_DEF,
+	FLAG_CONST_UNDEF,	// flag for undefined constant
+	FLAG_CONST_DEF,		// flag for when constant has been defined
 	FLAG_VAR
 } flagsEnum;
 
 // rgc: struct for numerical data, with built-in type tracking
 typedef struct {
 	vartypeEnum type;			// rgc: id type (double or int)
-	flagsEnum flag;
+	flagsEnum flag;				// constant flags (defined, undefined, constant)
 	union {
 		int _int;					// data for int
 		double _double;				// data for double
@@ -43,7 +44,7 @@ typedef struct {
 typedef struct {
     char *s;                    /* variable name - changed JWJ */
 	vartypeEnum type;			//rgc: id type (double or int)
-	flagsEnum flag;
+	flagsEnum flag;		// constant flags (defined, undefined, constant)
 } idNodeType;
 
 /* operators */
